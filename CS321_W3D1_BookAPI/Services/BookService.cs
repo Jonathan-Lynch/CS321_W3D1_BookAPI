@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 
 namespace CS321_W3D1_BookAPI.Services
@@ -19,27 +20,46 @@ namespace CS321_W3D1_BookAPI.Services
 
 		public Book Add(Book newBook)
 		{
-			throw new NotImplementedException();
+			_bookContext.Books.Add(newBook);
+			_bookContext.SaveChanges();
+			return newBook;
 		}
 
 		public void Delete(Book book)
 		{
-			throw new NotImplementedException();
+			// make sure the book exists
+			var currentBook = _bookContext.Books.FirstOrDefault(b => b.Id == book.Id);
+			if (currentBook != null)
+			{
+				_bookContext.Books.Remove(book);
+				_bookContext.SaveChanges();
+			}
 		}
 
 		public Book Get(int id)
 		{
-			throw new NotImplementedException();
+			return _bookContext.Books.FirstOrDefault(b => b.Id == id);
+			// the line above is equal to the line below
+			//var book = _bookContext.Books.FirstOrDefault(b => b.Id == id);
+			//return book;
 		}
 
 		public IEnumerable<Book> GetAll()
 		{
-			throw new NotImplementedException();
+			return _bookContext.Books;
 		}
 
 		public Book Update(Book updatedBook)
 		{
-			throw new NotImplementedException();
+			var currentBook = _bookContext.Books.FirstOrDefault(b => b.Id == updatedBook.Id);
+			if (currentBook != null)
+			{
+				_bookContext.Entry<Book>(currentBook).CurrentValues.SetValues(updatedBook);
+				_bookContext.Books.Update(updatedBook);
+				_bookContext.SaveChanges();
+				return currentBook;
+			}
+			return null;
 		}
 	}
 }
