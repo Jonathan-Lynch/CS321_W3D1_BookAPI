@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CS321_W3D1_BookAPI.Migrations
 {
-    [DbContext(typeof(BookContext))]
+    [DbContext(typeof(AppDbContext))]
     partial class BookContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

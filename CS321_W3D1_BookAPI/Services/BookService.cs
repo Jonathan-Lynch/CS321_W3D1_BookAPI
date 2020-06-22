@@ -11,9 +11,9 @@ namespace CS321_W3D1_BookAPI.Services
 {
 	public class BookService : IBookService
 	{
-		private readonly BookContext _bookContext;
+		private readonly AppDbContext _bookContext;
 
-		public BookService(BookContext myContext)
+		public BookService(AppDbContext myContext)
 		{
 			_bookContext = myContext;	
 		}
@@ -39,9 +39,6 @@ namespace CS321_W3D1_BookAPI.Services
 		public Book Get(int id)
 		{
 			return _bookContext.Books.FirstOrDefault(b => b.Id == id);
-			// the line above is equal to the line below
-			//var book = _bookContext.Books.FirstOrDefault(b => b.Id == id);
-			//return book;
 		}
 
 		public IEnumerable<Book> GetAll()

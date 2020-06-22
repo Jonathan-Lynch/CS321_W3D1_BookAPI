@@ -19,6 +19,6 @@ namespace CS321_W3D1_BookAPI.Models
 
 		[Required]
 		public string Category { get; set; }
-		
+		public int AuthorId { get; internal set; }
 	}
 }

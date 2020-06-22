@@ -24,8 +24,8 @@ namespace CS321_W3D1_BookAPI.Data
 
 			myModelBuilder.Entity<Book>().HasData(
 				new Book { Id = 1, Title = "The Great Divorce", AuthorId = 1, Category = "Theology", },
-				new Book { Id = 2, Title = "Tilt-A-Whirl", Author = "N.D. Wilson", Category = "Theology" },
-				new Book { Id = 3, Title = "The Holiness of God", Author = "R.C. Sproul", Category = "Theology" }
+				new Book { Id = 2, Title = "Tilt-A-Whirl", AuthorId = 2, Category = "Theology" },
+				new Book { Id = 3, Title = "The Holiness of God", AuthorId = 3, Category = "Theology" }
 
 				);
 			myModelBuilder.Entity<Author>().HasData(
